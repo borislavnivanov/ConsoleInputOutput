@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. FormattingNumbers", "For
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.QuadraticEquation", "QuadraticEquation\6.QuadraticEquation.csproj", "{A1AFC74D-F26B-49D3-9942-C2418AE90309}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7. SumOf5Numbers", "SumOf5Numbers\7. SumOf5Numbers.csproj", "{0AA5029B-848F-49D4-80B2-21B5A0F85A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8. NumbersFrom1toN", "NumbersFrom1toN\8. NumbersFrom1toN.csproj", "{91294D36-9479-4ADD-A91E-22A580D7B87F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{A1AFC74D-F26B-49D3-9942-C2418AE90309}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1AFC74D-F26B-49D3-9942-C2418AE90309}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1AFC74D-F26B-49D3-9942-C2418AE90309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AA5029B-848F-49D4-80B2-21B5A0F85A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA5029B-848F-49D4-80B2-21B5A0F85A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA5029B-848F-49D4-80B2-21B5A0F85A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA5029B-848F-49D4-80B2-21B5A0F85A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91294D36-9479-4ADD-A91E-22A580D7B87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91294D36-9479-4ADD-A91E-22A580D7B87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91294D36-9479-4ADD-A91E-22A580D7B87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91294D36-9479-4ADD-A91E-22A580D7B87F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
