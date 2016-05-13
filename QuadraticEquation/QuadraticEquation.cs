@@ -29,23 +29,27 @@ class QuadraticEquation
         // find the case of equation and calculate the result
         if (d > 0 && b % 2 != 0)
         {
+            // case descriminant is above 0 and even number
             double x1 = (-b - Math.Sqrt(d)) / (2 * a);
             double x2 = (-b + Math.Sqrt(d)) / (2 * a);
             Console.WriteLine("\nThe equation has 2 real roots: x1={0} ; x2={1}", x1, x2);
         }
         else if (d > 0 && b % 2 == 0)
         {
+            // case descriminant is above 0 and odd number
             double x1 = (-b - Math.Sqrt(d)) / a;
             double x2 = (-b + Math.Sqrt(d)) / a;
             Console.WriteLine("\nThe equation has 2 real roots: x1={0} ; x2={1}", x1, x2);
         }
         else if( d == 0)
         {
+            // case descriminant is 0
             double x = -b / (2 * a);
             Console.WriteLine("\nThe equation has 1 real root: x1=x2={0}", x);
         }
         else
         {
+            // case descriminant is below 0
             Console.WriteLine("\nThe equation has no real roots");
         }
 
