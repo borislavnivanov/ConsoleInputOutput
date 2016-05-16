@@ -18,6 +18,35 @@ class NumbersInIntervalDividableByGivenNumber
 {
     static void Main()
     {
+        Console.WriteLine("Please enter strat number");
+        uint start = uint.Parse(Console.ReadLine());
+        Console.WriteLine("Please enter end number");
+        uint end = uint.Parse(Console.ReadLine());
 
+        int count = 0;
+
+        if (start < end)
+        {
+            for (uint i = start; i <= end; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    count++;
+                }
+            }
+        }
+        // Handles the case where end number is less then the start number
+        else
+        {
+            for (uint i = end; i <= start; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    count++;
+                }
+            }
+        }
+        
+        Console.WriteLine("The count of the numbers that are dvisible by 5 is {0}", count);
     }
 }
