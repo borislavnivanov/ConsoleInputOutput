@@ -7,13 +7,18 @@ Implement collision detection and scoring system.
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-class FallingRocks
+namespace FallingRocksGame
 {
-    static void Main()
+    class FallingRocks
     {
-        
+        static void Main(string[] args)
+        {
+
+        }
     }
 }
-
