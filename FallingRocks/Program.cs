@@ -77,7 +77,7 @@ namespace FallingRocksGame
             x[8] = "!";
             x[9] = ".";
             x[10] = ";";
-            
+
             while (true)
             {
                 int i = randomGenerator.Next(0, x.Length);
@@ -140,7 +140,7 @@ namespace FallingRocksGame
                         {
                             speed = speed - 50;
                         }
-                       
+
                         colision = true;
                         if (lives <= 0)
                         {
