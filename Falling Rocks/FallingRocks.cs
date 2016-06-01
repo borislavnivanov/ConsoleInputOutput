@@ -25,7 +25,7 @@ namespace FallingRocksGame
 
     class FallingRocks
     {
-
+        // Printing an object on specific cordinates on the console.
         static void PrintOnPosition(int x, int y, string c, ConsoleColor color = ConsoleColor.Gray)
         {
             Console.SetCursorPosition(x, y);
@@ -33,7 +33,7 @@ namespace FallingRocksGame
             Console.Write(c);
         }
 
-        //Generates random Console colours
+        //Generates random Console colours.
         private static Random _random = new Random();
         private static ConsoleColor GetRandomConsoleColor()
         {
@@ -41,14 +41,20 @@ namespace FallingRocksGame
             return (ConsoleColor)consoleColors.GetValue(_random.Next(consoleColors.Length));
         }
 
+        static int lives = 5;
 
+        static int speed = 0;
 
+        static int indexOfLevel = 0;
 
         static void Main()
         {
 
-            Console.BufferHeight = Console.WindowHeight = 40;
-            Console.BufferWidth = Console.WindowWidth = 50;
+            Console.BufferHeight = Console.WindowHeight = 35;
+            Console.BufferWidth = Console.WindowWidth = 40;
+            Console.CursorVisible = false;
+
+            bool colision = false;
 
             Rock dwarf = new Rock();
             dwarf.x = Console.WindowWidth / 2;
@@ -72,6 +78,8 @@ namespace FallingRocksGame
             x[8] = "!";
             x[9] = ".";
             x[10] = ";";
+            
+            
 
             while (true)
             {
@@ -86,7 +94,7 @@ namespace FallingRocksGame
                         newRock.color = ConsoleColor.Gray;
                     }
                     newRock.x = randomGenerator.Next(0, Console.WindowWidth);
-                    newRock.y = 0;
+                    newRock.y = 3;
                     newRock.c = rockChar;
                     rocks.Add(newRock);
                 }
@@ -130,6 +138,92 @@ namespace FallingRocksGame
                     newRock.y = oldRock.y + 1;
                     newRock.c = oldRock.c;
                     newRock.color = oldRock.color;
+                    if ((newRock.x == dwarf.x || newRock.x == dwarf.x + 1 || newRock.x == dwarf.x + 2) && newRock.y == dwarf.y)
+                    {
+                        lives--;
+                        if (speed > 75)
+                        {
+                            speed = speed - 50;
+                        }
+                       
+                        colision = true;
+                        if (lives <= 0)
+                        {
+                            Console.Clear();
+                            PrintOnPosition(Console.WindowWidth / 2 - 6, Console.WindowHeight / 2, "GAME OVER!!!", ConsoleColor.DarkRed);
+                            PrintOnPosition(Console.WindowWidth / 2 - 10, Console.WindowHeight / 2 + 2, "You reached level " + indexOfLevel, ConsoleColor.DarkRed);
+                            Console.ReadLine();
+                            return;
+
+                        }
+                    }
+
+                    if (speed <= 25)
+                    {
+                        indexOfLevel = 1;
+                    }
+                    if (26 <= speed && speed >= 50)
+                    {
+                        indexOfLevel = 2;
+                    }
+                    if (51 <= speed && speed >= 75)
+                    {
+                        indexOfLevel = 3;
+                    }
+                    if (76 <= speed && speed >= 100)
+                    {
+                        indexOfLevel = 4;
+                    }
+                    if (101 <= speed && speed >= 125)
+                    {
+                        indexOfLevel = 5;
+                    }
+                    if (126 <= speed && speed >= 150)
+                    {
+                        indexOfLevel = 6;
+                    }
+                    if (151 <= speed && speed >= 175)
+                    {
+                        indexOfLevel = 7;
+                    }
+                    if (176 <= speed && speed >= 200)
+                    {
+                        indexOfLevel = 8;
+                    }
+                    if (201 <= speed && speed >= 225)
+                    {
+                        indexOfLevel = 9;
+                    }
+                    if (226 <= speed && speed >= 250)
+                    {
+                        indexOfLevel = 10;
+                    }
+                    if (251 <= speed && speed >= 275)
+                    {
+                        indexOfLevel = 11;
+                    }
+                    if (276 <= speed && speed >= 300)
+                    {
+                        indexOfLevel = 12;
+                    }
+                    if (301 <= speed && speed >= 325)
+                    {
+                        indexOfLevel = 13;
+                    }
+                    if (326 <= speed && speed >= 350)
+                    {
+                        indexOfLevel = 14;
+                    }
+                    if (351 <= speed && speed >= 375)
+                    {
+                        indexOfLevel = 15;
+                    }
+                    if (376 <= speed)
+                    {
+                        indexOfLevel = 16;
+                    }
+
+
                     if (newRock.y < Console.WindowHeight)
                     {
                         newList.Add(newRock);
@@ -137,7 +231,6 @@ namespace FallingRocksGame
                 }
                 rocks = newList;
 
-                // TODO: Collision detection system
                 Console.Clear();
 
                 PrintOnPosition(dwarf.x, dwarf.y, dwarf.c, dwarf.color);
@@ -147,10 +240,43 @@ namespace FallingRocksGame
                     PrintOnPosition(rock.x, rock.y, rock.c, rock.color);
                 }
 
+               
+                
 
-                // TODO: Scoring system
 
-                Thread.Sleep(150);
+                PrintOnPosition(0, 0, "FALLING ROCKS GAME", ConsoleColor.White);
+
+                PrintOnPosition(Console.WindowWidth - 14, 0, "Lives count: " + lives, ConsoleColor.White);
+
+                PrintOnPosition(0, 1, "You are at level " + indexOfLevel, ConsoleColor.White);
+
+                PrintOnPosition(Console.WindowWidth - 14, 1, "Speed is: " + speed, ConsoleColor.White);
+
+                char pad = '-';
+                string str = "-";
+                PrintOnPosition(0, 2, str.PadLeft(Console.WindowHeight + 4, pad), ConsoleColor.White);
+
+                PrintOnPosition(dwarf.x, dwarf.y, dwarf.c, dwarf.color);
+
+                if (colision)
+                {
+                    rocks.Clear();
+
+                    colision = false;
+                }
+
+
+                if (speed > 399)
+                {
+                    speed = 400;
+                }
+                else
+                {
+                    speed++;
+                }
+
+                Thread.Sleep(500 - speed);
+
 
             }
         }
