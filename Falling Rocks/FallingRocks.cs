@@ -1,4 +1,5 @@
-﻿/*Implement the "Falling Rocks" game in the text console.
+﻿/*
+Implement the "Falling Rocks" game in the text console.
 A small dwarf stays at the bottom of the screen and can move left and right (by the arrows keys).
 A number of rocks of different sizes and forms constantly fall down and you need to avoid a crash.
 Rocks are the symbols ^, @, *, &, +, %, $, #, !, ., ;, - distributed with appropriate density. The dwarf is (O).
@@ -6,13 +7,13 @@ Ensure a constant game speed by Thread.Sleep(150).
 Implement collision detection and scoring system.
 */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-
 namespace FallingRocksGame
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Threading;
+
     struct Rock
     {
         public int x;
@@ -20,8 +21,6 @@ namespace FallingRocksGame
         public ConsoleColor color;
         public string c;
     }
-
-
 
     class FallingRocks
     {
@@ -33,12 +32,13 @@ namespace FallingRocksGame
             Console.Write(c);
         }
 
-        //Generates random Console colours.
-        private static Random _random = new Random();
+        // Generates random Console colours.
+        private static Random random = new Random();
+
         private static ConsoleColor GetRandomConsoleColor()
         {
             var consoleColors = Enum.GetValues(typeof(ConsoleColor));
-            return (ConsoleColor)consoleColors.GetValue(_random.Next(consoleColors.Length));
+            return (ConsoleColor)consoleColors.GetValue(random.Next(consoleColors.Length));
         }
 
         static int lives = 5;
@@ -49,7 +49,6 @@ namespace FallingRocksGame
 
         static void Main()
         {
-
             Console.BufferHeight = Console.WindowHeight = 35;
             Console.BufferWidth = Console.WindowWidth = 40;
             Console.CursorVisible = false;
@@ -79,13 +78,11 @@ namespace FallingRocksGame
             x[9] = ".";
             x[10] = ";";
             
-            
-
             while (true)
             {
                 int i = randomGenerator.Next(0, x.Length);
                 string rockChar = x[i];
-                // Generates a new falling rock.
+                //// Generates a new falling rock.
                 {
                     Rock newRock = new Rock();
                     newRock.color = GetRandomConsoleColor();
@@ -93,13 +90,12 @@ namespace FallingRocksGame
                     {
                         newRock.color = ConsoleColor.Gray;
                     }
+
                     newRock.x = randomGenerator.Next(0, Console.WindowWidth);
                     newRock.y = 3;
                     newRock.c = rockChar;
                     rocks.Add(newRock);
                 }
-
-
 
                 if (Console.KeyAvailable)
                 {
@@ -120,12 +116,11 @@ namespace FallingRocksGame
 
                     if (pressedkey.Key == ConsoleKey.RightArrow)
                     {
-                        if (dwarf.x + dwarf.c.Length + 1 < Console.WindowWidth) //TODO: dwarf.c.Lenght + 1 makes the last colum unusable
+                        if (dwarf.x + dwarf.c.Length < Console.WindowWidth - 1)
                         {
                             dwarf.x = dwarf.x + 1;
                         }
                     }
-
                 }
 
                 List<Rock> newList = new List<Rock>();
@@ -150,11 +145,10 @@ namespace FallingRocksGame
                         if (lives <= 0)
                         {
                             Console.Clear();
-                            PrintOnPosition(Console.WindowWidth / 2 - 6, Console.WindowHeight / 2, "GAME OVER!!!", ConsoleColor.DarkRed);
-                            PrintOnPosition(Console.WindowWidth / 2 - 10, Console.WindowHeight / 2 + 2, "You reached level " + indexOfLevel, ConsoleColor.DarkRed);
+                            PrintOnPosition((Console.WindowWidth / 2) - 6, Console.WindowHeight / 2, "GAME OVER!!!", ConsoleColor.DarkRed);
+                            PrintOnPosition((Console.WindowWidth / 2) - 10, (Console.WindowHeight / 2) + 2, "You reached level " + indexOfLevel, ConsoleColor.DarkRed);
                             Console.ReadLine();
                             return;
-
                         }
                     }
 
@@ -162,73 +156,88 @@ namespace FallingRocksGame
                     {
                         indexOfLevel = 1;
                     }
-                    if (26 <= speed && speed >= 50)
+
+                    if (speed >= 26 && speed >= 50)
                     {
                         indexOfLevel = 2;
                     }
-                    if (51 <= speed && speed >= 75)
+
+                    if (speed >= 51 && speed >= 75)
                     {
                         indexOfLevel = 3;
                     }
-                    if (76 <= speed && speed >= 100)
+
+                    if (speed >= 76 && speed >= 100)
                     {
                         indexOfLevel = 4;
                     }
-                    if (101 <= speed && speed >= 125)
+
+                    if (speed >= 101 && speed >= 125)
                     {
                         indexOfLevel = 5;
                     }
-                    if (126 <= speed && speed >= 150)
+
+                    if (speed >= 126 && speed >= 150)
                     {
                         indexOfLevel = 6;
                     }
-                    if (151 <= speed && speed >= 175)
+
+                    if (speed >= 151 && speed >= 175)
                     {
                         indexOfLevel = 7;
                     }
-                    if (176 <= speed && speed >= 200)
+
+                    if (speed >= 176 && speed >= 200)
                     {
                         indexOfLevel = 8;
                     }
-                    if (201 <= speed && speed >= 225)
+
+                    if (speed >= 201 && speed >= 225)
                     {
                         indexOfLevel = 9;
                     }
-                    if (226 <= speed && speed >= 250)
+
+                    if (speed >= 226 && speed >= 250)
                     {
                         indexOfLevel = 10;
                     }
-                    if (251 <= speed && speed >= 275)
+
+                    if (speed >= 251 && speed >= 275)
                     {
                         indexOfLevel = 11;
                     }
-                    if (276 <= speed && speed >= 300)
+
+                    if (speed >= 276 && speed >= 300)
                     {
                         indexOfLevel = 12;
                     }
-                    if (301 <= speed && speed >= 325)
+
+                    if (speed >= 301 && speed >= 325)
                     {
                         indexOfLevel = 13;
                     }
-                    if (326 <= speed && speed >= 350)
+
+                    if (speed >= 326 && speed >= 350)
                     {
                         indexOfLevel = 14;
                     }
-                    if (351 <= speed && speed >= 375)
+
+                    if (speed >= 351 && speed >= 375)
                     {
                         indexOfLevel = 15;
                     }
-                    if (376 <= speed)
+
+                    if (speed >= 376)
                     {
                         indexOfLevel = 16;
                     }
-
 
                     if (newRock.y < Console.WindowHeight)
                     {
                         newList.Add(newRock);
                     }
                 }
+
                 rocks = newList;
 
                 Console.Clear();
@@ -239,10 +248,6 @@ namespace FallingRocksGame
                 {
                     PrintOnPosition(rock.x, rock.y, rock.c, rock.color);
                 }
-
-               
-                
-
 
                 PrintOnPosition(0, 0, "FALLING ROCKS GAME", ConsoleColor.White);
 
@@ -265,7 +270,6 @@ namespace FallingRocksGame
                     colision = false;
                 }
 
-
                 if (speed > 399)
                 {
                     speed = 400;
@@ -276,8 +280,6 @@ namespace FallingRocksGame
                 }
 
                 Thread.Sleep(500 - speed);
-
-
             }
         }
     }
