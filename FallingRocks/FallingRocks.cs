@@ -24,28 +24,111 @@ namespace FallingRocksGame
 
     class FallingRocks
     {
-        // Printing an object on specific cordinates on the console.
+        static int indexOfLevel = 0;
+        static int speed = 0;
+        static int lives = 5;
+
         static void PrintOnPosition(int x, int y, string c, ConsoleColor color = ConsoleColor.Gray)
         {
+            // Printing an object on specific cordinates on the console.
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = color;
             Console.Write(c);
         }
 
-        // Generates random Console colours.
-        private static Random random = new Random();
+        static void levels()
+        {
+            // Caunts the levels in relation to the speed.
+            if (speed <= 25)
+            {
+                indexOfLevel = 1;
+            }
 
-        private static ConsoleColor GetRandomConsoleColor()
+            if (speed >= 26 && speed <= 50)
+            {
+                indexOfLevel = 2;
+            }
+
+            if (speed >= 51 && speed <= 75)
+            {
+                indexOfLevel = 3;
+            }
+
+            if (speed >= 76 && speed <= 100)
+            {
+                indexOfLevel = 4;
+            }
+
+            if (speed >= 101 && speed <= 125)
+            {
+                indexOfLevel = 5;
+            }
+
+            if (speed >= 126 && speed <= 150)
+            {
+                indexOfLevel = 6;
+            }
+
+            if (speed >= 151 && speed <= 175)
+            {
+                indexOfLevel = 7;
+            }
+
+            if (speed >= 176 && speed <= 200)
+            {
+                indexOfLevel = 8;
+            }
+
+            if (speed >= 201 && speed <= 225)
+            {
+                indexOfLevel = 9;
+            }
+
+            if (speed >= 226 && speed <= 250)
+            {
+                indexOfLevel = 10;
+            }
+
+            if (speed >= 251 && speed <= 275)
+            {
+                indexOfLevel = 11;
+            }
+
+            if (speed >= 276 && speed <= 300)
+            {
+                indexOfLevel = 12;
+            }
+
+            if (speed >= 301 && speed <= 325)
+            {
+                indexOfLevel = 13;
+            }
+
+            if (speed >= 326 && speed <= 350)
+            {
+                indexOfLevel = 14;
+            }
+
+            if (speed >= 351 && speed <= 375)
+            {
+                indexOfLevel = 15;
+            }
+
+            if (speed >= 376)
+            {
+                indexOfLevel = 16;
+            }
+        }
+
+        // Generates random Console colours.
+        static Random random = new Random();
+
+        static ConsoleColor GetRandomConsoleColor()
         {
             var consoleColors = Enum.GetValues(typeof(ConsoleColor));
             return (ConsoleColor)consoleColors.GetValue(random.Next(consoleColors.Length));
         }
 
-        static int lives = 5;
-
-        static int speed = 0;
-
-        static int indexOfLevel = 0;
 
         static void Main()
         {
@@ -152,85 +235,7 @@ namespace FallingRocksGame
                         }
                     }
 
-                    if (speed <= 25)
-                    {
-                        indexOfLevel = 1;
-                    }
-
-                    if (speed >= 26 && speed <= 50)
-                    {
-                        indexOfLevel = 2;
-                    }
-
-                    if (speed >= 51 && speed <= 75)
-                    {
-                        indexOfLevel = 3;
-                    }
-
-                    if (speed >= 76 && speed <= 100)
-                    {
-                        indexOfLevel = 4;
-                    }
-
-                    if (speed >= 101 && speed <= 125)
-                    {
-                        indexOfLevel = 5;
-                    }
-
-                    if (speed >= 126 && speed <= 150)
-                    {
-                        indexOfLevel = 6;
-                    }
-
-                    if (speed >= 151 && speed <= 175)
-                    {
-                        indexOfLevel = 7;
-                    }
-
-                    if (speed >= 176 && speed <= 200)
-                    {
-                        indexOfLevel = 8;
-                    }
-
-                    if (speed >= 201 && speed <= 225)
-                    {
-                        indexOfLevel = 9;
-                    }
-
-                    if (speed >= 226 && speed <= 250)
-                    {
-                        indexOfLevel = 10;
-                    }
-
-                    if (speed >= 251 && speed <= 275)
-                    {
-                        indexOfLevel = 11;
-                    }
-
-                    if (speed >= 276 && speed <= 300)
-                    {
-                        indexOfLevel = 12;
-                    }
-
-                    if (speed >= 301 && speed <= 325)
-                    {
-                        indexOfLevel = 13;
-                    }
-
-                    if (speed >= 326 && speed <= 350)
-                    {
-                        indexOfLevel = 14;
-                    }
-
-                    if (speed >= 351 && speed <= 375)
-                    {
-                        indexOfLevel = 15;
-                    }
-
-                    if (speed >= 376)
-                    {
-                        indexOfLevel = 16;
-                    }
+                    levels();
 
                     if (newRock.y < Console.WindowHeight)
                     {
@@ -259,14 +264,13 @@ namespace FallingRocksGame
 
                 char pad = '-';
                 string str = "-";
-                PrintOnPosition(0, 2, str.PadLeft(Console.WindowHeight + 4, pad), ConsoleColor.White);
+                PrintOnPosition(0, 2, str.PadLeft(Console.WindowWidth, pad), ConsoleColor.White);
 
                 PrintOnPosition(dwarf.x, dwarf.y, dwarf.c, dwarf.color);
 
                 if (colision)
                 {
                     rocks.Clear();
-
                     colision = false;
                 }
 
